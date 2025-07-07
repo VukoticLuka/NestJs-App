@@ -12,23 +12,6 @@ export class UsersService {
     @InjectRepository(UserModal)
     private readonly userRepository: Repository<UserModal>,
   ) {}
-//   private users = [
-//     {
-//       id: 1,
-//       name: 'Luka',
-//       role: 'ENGINEER',
-//     },
-//     {
-//       id: 2,
-//       name: 'Marija',
-//       role: 'ADMIN',
-//     },
-//     {
-//       id: 3,
-//       name: 'Milos',
-//       role: 'USER',
-//     },
-//   ];
 
   async findAll() {
     return await this.userRepository.find();
