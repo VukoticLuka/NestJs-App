@@ -7,7 +7,6 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class UsersService {
-
   constructor(
     @InjectRepository(UserModal)
     private readonly userRepository: Repository<UserModal>,
@@ -29,29 +28,24 @@ export class UsersService {
   async delete(id: number) {
     const user = await this.findOne(id);
 
-    if(!user){
-        throw new NotFoundException(`User with id=${id} not found`)
+    if (!user) {
+      throw new NotFoundException(`User with id=${id} not found`);
     }
 
     await this.userRepository.delete({ id });
-    return user; 
-    
+    return user;
   }
 
-  async update(
-    id: number,
-    updatedUser: UpdateUserDto,
-  ) {
+  async update(id: number, updatedUser: UpdateUserDto) {
     const user = await this.userRepository.preload({
-        id,
-        ...updatedUser
+      id,
+      ...updatedUser,
     });
 
-    if(!user){
-        throw new NotFoundException(`User with id=${id} not found`);
+    if (!user) {
+      throw new NotFoundException(`User with id=${id} not found`);
     }
 
     return await this.userRepository.save(user);
   }
-    
 }

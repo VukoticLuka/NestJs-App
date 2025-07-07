@@ -7,7 +7,7 @@ import {
   ParseIntPipe,
   Patch,
   Post,
-  ValidationPipe
+  ValidationPipe,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/user-creation.dto';
@@ -28,9 +28,7 @@ export class UsersController {
   }
 
   @Post()
-  async create(
-    @Body(ValidationPipe) user: CreateUserDto,
-  ): Promise<any> {
+  async create(@Body(ValidationPipe) user: CreateUserDto): Promise<any> {
     return await this.userService.create(user);
   }
 
