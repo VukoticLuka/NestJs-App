@@ -12,7 +12,7 @@ dotenv.config();
       database: process.env.DB_NAME || 'test_db',
       entities: [UserModal],
       synchronize: true,
-      logging: process.env.TYPE === 'DEV' ? true : false,
+      // logging: process.env.TYPE === 'DEV' ? true : false,
     }),
   ],
 })
