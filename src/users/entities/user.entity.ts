@@ -15,6 +15,9 @@ export class UserModal {
   @Column({ type: 'text', name: 'name' })
   name: string;
 
+  @Column({ type: 'text', name: 'password'})
+  password: string;
+
   @Column({ nullable: true, type: 'text', name: 'email' })
   email?: string;
 
