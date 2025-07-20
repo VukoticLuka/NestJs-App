@@ -4,6 +4,7 @@ import {
   IsNotEmpty,
   IsOptional,
   IsString,
+  MinLength,
 } from 'class-validator';
 
 export enum Role {
@@ -16,6 +17,11 @@ export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
   name: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @MinLength(8, { message : "Password must be at least 8 characters"})
+  password: string;
 
   @IsOptional()
   @IsEmail({}, { message: 'Must be valid email' })
